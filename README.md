@@ -42,9 +42,7 @@ int main(int argc, char* argv[]){
 }
 ```
 
-## Most important documentation
-
-### class `Parser`
+## The `Parser` class
 
 The class to inherit from to create an argument parser.
 
@@ -57,9 +55,9 @@ The class to inherit from to create an argument parser.
 | `public inline std::string GetErrorMessage() const`                                                                                                                       | Get the error messages if errors happened doing parsing.                                                                                   |
 | `protected template<typename T>` <br/>`inline constexpr T* arg(const char* LongName, const char* ShortName, const T defaultValue, const char* helpMessage,bool required)` | Add an argument to the parser.                                                                                                             |
 
-#### Members
+### Members
 
-##### parse
+#### parse
 
 ```cpp
 public inline bool parse(int argc,char * argv,std::vector< char * > * out_arg)
@@ -67,7 +65,7 @@ public inline bool parse(int argc,char * argv,std::vector< char * > * out_arg)
 
 Parse the arguments received when main is called.
 
-###### Parameters
+##### Parameters
 
 - `argc` The argument count.
 
@@ -75,13 +73,13 @@ Parse the arguments received when main is called.
 
 - `out_arg` The arguments not consumed by the passer. (Ignored if nullptr)
 
-###### Returns
+##### Returns
 
 - `true` Parsing happened without errors.
 
 - `false` Errors occurred when parsing.
 
-##### WelcomeMessage
+#### WelcomeMessage
 
 ```cpp
 public inline virtual const char * WelcomeMessage() const
@@ -89,11 +87,11 @@ public inline virtual const char * WelcomeMessage() const
 
 Returns the welcome message printed with the help message. (Can be overridden.)
 
-###### Returns
+##### Returns
 
 const char\* The welcome message printed with the help message.
 
-##### HelpEnabled
+#### HelpEnabled
 
 ```cpp
 public inline virtual const bool HelpEnabled() const
@@ -101,13 +99,13 @@ public inline virtual const bool HelpEnabled() const
 
 Should the parser print help when '-h' and 'help' is called as the first argument. By default it always returns true. (Can be overridden.)
 
-###### Returns
+##### Returns
 
 - `true` Help will be printed.
 
 - `false` '-h' and 'help' does nothing and can be used as normal arguments.
 
-##### AllowUnknownArguments
+#### AllowUnknownArguments
 
 ```cpp
 public inline virtual const bool AllowUnknownArguments() const
@@ -115,15 +113,15 @@ public inline virtual const bool AllowUnknownArguments() const
 
 Should the parser report errors if an unknown arguments are given? By default it always returns false. (Can be overridden.)
 
-###### Returns
+##### Returns
 
 true Unknown arguments will curse errors.
 
-###### Returns
+##### Returns
 
 false Unknown arguments will not be reported as errors.
 
-##### GetHelpMessage
+#### GetHelpMessage
 
 ```cpp
 public inline std::string GetHelpMessage() const
@@ -131,11 +129,11 @@ public inline std::string GetHelpMessage() const
 
 Get the help message for the parser.
 
-###### Returns
+##### Returns
 
 std::string The help message.
 
-##### GetErrorMessage
+#### GetErrorMessage
 
 ```cpp
 public inline std::string GetErrorMessage() const
@@ -143,11 +141,11 @@ public inline std::string GetErrorMessage() const
 
 Get the error messages if errors happened doing parsing.
 
-###### Returns
+##### Returns
 
 std::string The error messages.
 
-##### arg
+#### arg
 
 ```cpp
 protected template<typename T>`
@@ -160,11 +158,11 @@ inline constexpr T * arg(const char * LongName,
 
 Add an argument to the parser.
 
-###### Parameters
+##### Parameters
 
 - `T` The type of the argument.
 
-###### Parameters
+##### Parameters
 
 - `LongName` The long name that specifies the argument. Ignored if empty string is given. (Called with two dashes before.)
 
@@ -176,7 +174,7 @@ Add an argument to the parser.
 
 - `required` Should an error be reported if the argument is not given?
 
-###### Returns
+##### Returns
 
 constexpr T\* A pointer to where the value will be stored after the parser has run.
 
