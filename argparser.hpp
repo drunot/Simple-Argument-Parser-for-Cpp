@@ -355,7 +355,7 @@ namespace argparser {
          *
          * @return std::string The help message.
          */
-        std::string GetHelpMessage() {
+        std::string GetHelpMessage() const {
             std::map<AnyTypeArg*, std::array<std::string, 2>> Sorter;
             
             for(auto pair : _argData) {
